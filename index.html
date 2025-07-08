@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frians Barbershop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font: serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('ruang.jpg') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .judul {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            text-align: center;      
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 36px;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 30px rgb(227, 230, 92);
+        }
+        p {
+            font-size: 20px;
+            color: #fff;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #cac146;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #bdaa3f;
+            transform: translateY(-3px);
+        }
+        footer {
+            padding: 20px 0;
+            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        .contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+       .contact-items-wrapper {
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-item img {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05em;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #ffe66d;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="judul">
+        <h1>SELAMAT DATANG DI FRIANS BARBERSHOP</h1>
+        <p>"Keren Bukan Lagi Pilihan, Tapi Kebutuhan"</p>
+        <a href="informasi.html" class="btn">Informasi Barbershop</a>
+        <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
+    </div>
+
+    <footer>
+        <div class="contact">
+            <div class="contact-item">
+                <img src="ig.png" alt="Instagram">
+                <a href="https://instagram.com/yudiswsm" target="_blank">@yudiswsm</a>
+            </div>
+            <div class="contact-item">
+                <img src="wa.png" alt="WhatsApp">
+                <a href="https://wa.me/6282286230332" target="_blank">+62 822-8623-0332</a>
+            </div>
+            <div class="contact-item">
+                <img src="mail.png" alt="Email">
+                <a href="mailto:yudistc22@gmail.com">friansbarbershop@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

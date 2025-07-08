@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informasi Barbershop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+            url('ruang.jpg') top/cover;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 36px;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 30px rgb(227, 230, 92);
+        }
+        header, footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #cac146;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #bdaa3f;
+        }
+        main {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 10px;
+        }
+        #content {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        article {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        article h2 {
+            color: #cac146;
+            border-bottom: 2px solid #cac146;
+            padding-bottom: 10px;
+        }
+        aside {
+            flex: 1;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        aside img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .biaya-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .biaya-table th, .biaya-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .biaya-table th {
+            background-color: #cac146;
+            color: #fff;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #cac146;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #bdaa3f;
+            transform: translateY(-3px);
+        }
+    
+
+        footer .contact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 15px;
+            padding-bottom: 15px;  
+        }
+
+        .contact-heading {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f0f0f0;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .contact-heading::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: #cac146;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .contact-items-wrapper {
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-item img {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05em;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #ffe66d;
+            text-decoration: underline;
+        }
+        .testimonial-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 5px solid #cac146;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-style: italic;
+            color: #333;
+        }
+        .testimonial-card p {
+            margin: 0 0 10px 0;
+        }
+        .testimonial-card .author {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FRIANS BARBERSHOP</h1>
+        <nav>
+            <a href="#jadwal-buka">Jadwal Buka & Tutup</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#biaya">Harga</a>
+            <a href="#tukang-potong">Barberman</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="content">
+            <article id="jadwal-buka">
+                <h2>Jadwal Buka & Tutup</h2>
+                <p><strong>Senin - Sabtu :</strong> 09:00 - 23:00</p>
+                <p><strong>Minggu :</strong> Tutup</p>
+            </article>
+
+            <article id="layanan">
+                <h2>Layanan Kami</h2>
+                <p><strong>Haircut:</strong> Potong rambut untuk pria, wanita, dan anak-anak.</p>
+                <p><strong>Hair Treatment:</strong> Perawatan rambut seperti smoothing, keratin, dan deep conditioning.</p>
+                <p><strong>Hair Perming:</strong> Down perming & curly perming.</p>
+                <p><strong>Hair Styling:</strong> Untuk acara formal & kasual.</p>
+                <p><strong>Hair Coloring:</strong> Mewarnai rambut untuk gaya kekinian.</p>
+                <p><strong>Dreadlock:</strong> Gaya rambut gimbal yang dianyam atau dikepang.</p>
+            </article>
+
+            <article id="biaya">
+                <h2>Daftar Harga</h2>
+                <table class="biaya-table">
+                    <tr><th>Layanan</th><th>Harga</th></tr>
+                    <tr><td>Haircut Pria</td><td>Rp 50.000</td></tr>
+                    <tr><td>Haircut Wanita</td><td>Rp 60.000</td></tr>
+                    <tr><td>Haircut Anak-anak</td><td>Rp 35.000</td></tr>
+                    <tr><td>Hair Treatment</td><td>Rp 200.000 - 500.000</td></tr>
+                    <tr><td>Hair Perming</td><td>Rp 250.000</td></tr>
+                    <tr><td>Hair Styling</td><td>Rp 30.000 - 70.000</td></tr>
+                    <tr><td>Hair Coloring</td><td>Rp 150.000 - 300.000</td></tr>
+                    <tr><td>Dreadlock</td><td>Rp 300.000 - 600.000</td></tr>
+                </table>
+            </article>
+
+            <article id="tukang-potong">
+                <h2>Barberman</h2>
+                <p><strong>Danda:</strong> Dengan pengalaman lebih dari 5 tahun, dikenal sebagai spesialis potongan rambut panjang yang mampu menciptakan gaya elegan dan natural, cocok untuk semua usia.</p>
+                <p><strong>Budi:</strong>  Ahli Korean-style haircut dengan pengalaman 6 tahun, mampu menghadirkan tampilan fresh dan trendi seperti gaya selebriti Korea.</p>
+                <p><strong>Ervin:</strong> Pernah menimba pengalaman langsung di barbershop Jepang, dapat membawa sentuhan disiplin dan detail khas Jepang dalam setiap potongannya.</p>
+                <p><strong>Aqil:</strong> Spesialis hair perming dan berbagai gaya potongan modern. Dengan 7 tahun pengalaman, Aqil siap menyulap rambut Anda menjadi mahakarya gaya.</p>
+                <p><strong>Sibal:</strong> Dengan 10 tahun pengalaman dan keahlian khusus dalam dreadlock dan hair coloring, Sibal adalah pilihan utama bagi Anda yang ingin tampil beda dan ekspresif.</p>
+            </article>
+             <article id="testimoni">
+                <h2>Testimoni Pelanggan</h2>
+                <div class="testimonial-card">
+                    <p>"Potongan rambut di Frians Barbershop selalu pas dan sesuai keinginan! Barbernya ramah dan profesional. Sangat merekomendasikan!"</p>
+                    <p class="author">- Bagus S.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Saya selalu puas dengan hasil hair coloring di sini. Warnanya bagus dan rambut tetap sehat. Terbaik!"</p>
+                    <p class="author">- Citra D.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Anak saya suka sekali potong rambut di Frians Barbershop. Barbernya sabar dan membuat anak nyaman. Pasti balik lagi!"</p>
+                    <p class="author">- Rian M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Layanan hair perming-nya top banget! Rambut jadi bervolume dan tahan lama. Terima kasih, Frians Barbershop!"</p>
+                    <p class="author">- Taufik H.</p>
+                </div>
+            </article>
+                    
+        </div>
+
+        <aside>
+            <h2>Tentang Kami</h2>
+            <img src="ruang2.jpg" alt="Foto Barbershop">
+            <p>Frians Barbershop adalah tempat grooming modern yang menggabungkan gaya klasik dan tren kekinian. Dengan tim barber berpengalaman dan pelayanan ramah, kami berkomitmen memberikan potongan rambut terbaik untuk menunjang penampilan Anda.
+                Kami percaya bahwa potong rambut bukan hanya kebutuhan, tapi juga bentuk ekspresi diri. Karena di Frians Barbershop, keren bukan lagi pilihan, tapi kebutuhan. Datang dan rasakan pengalaman berbeda di Frians Barbershop — karena penampilan keren dimulai dari sini.</p>
+        </aside>
+    </main>
+
+    <a href="beranda.html" class="btn">Kembali ke Halaman Utama</a>
+    <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
+
+<footer>
+    <div class="contact">
+        <p class="contact-heading">Atau Dapat Hubungi Kami Melalui:</p>
+        <div class="contact-items-wrapper"> <div class="contact-item">
+                <img src="ig.png" alt="Instagram">
+                <a href="https://instagram.com/yudiswsm" target="_blank">@yudiswsm</a>
+            </div>
+            <div class="contact-item">
+                <img src="wa.png" alt="WhatsApp">
+                <a href="https://wa.me/6282286230332" target="_blank">+62 822-8623-0332</a>
+            </div>
+            <div class="contact-item">
+                <img src="mail.png" alt="Email">
+                <a href="mailto:yudistc22@gmail.com">friansbarbershop@gmail.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

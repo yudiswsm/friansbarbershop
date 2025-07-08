@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pemesanan</title>
+    <style>
+        body {
+			margin: 0;
+            padding: 0;
+            font: serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('ruang2.jpg') top/cover;
+            justify-content: space-between;
+        }
+        .container {
+            background: linear-gradient(to right, #e9ecef, #f4f4f4);
+            opacity: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        h1 {
+            margin-bottom: 50px;
+            text-align: center;
+            color: #cac146;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .confirmation-details {
+            margin-bottom: 20px;
+        }
+        .confirmation-details label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 17px;
+        }
+        .confirmation-details p {
+			margin: 0;
+			padding: 12px;
+			background: #f8f9fa;
+			border: 1px solid #ddd;
+			border-radius: 6px;
+            font-size: 15px;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #cac146;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+		.btn:hover{
+            background-color: #bdaa3f;
+            transform: translateY(-3px);
+		}
+		footer {
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <h1>Detail Pemesanan</h1>
+        <div class="confirmation-details">
+            <label>Nama Lengkap:</label>
+            <p id="confirm-nama"></p>
+            <label>Email:</label>
+            <p id="confirm-email"></p>
+            <label>Nomor Telepon:</label>
+            <p id="confirm-no-telp"></p>
+            <label>Layanan:</label>
+            <p id="confirm-layanan"></p>
+            <label>Tukang Potong:</label>
+            <p id="confirm-tukang-potong"></p>
+            <label>Tanggal Pemesanan:</label>
+            <p id="confirm-tanggal"></p>
+            <label>Jam Pemesanan:</label>
+            <p id="confirm-jam"></p>
+        </div>
+        <a href="beranda.html" class="btn">Kembali ke Halaman Utama</a>
+    </div>
+
+    <script>
+         const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('confirm-nama').textContent = urlParams.get('nama') || 'Tidak tersedia';
+        document.getElementById('confirm-email').textContent = urlParams.get('email') || 'Tidak tersedia';
+        document.getElementById('confirm-no-telp').textContent = urlParams.get('no-telp') || 'Tidak tersedia';
+        document.getElementById('confirm-layanan').textContent = urlParams.get('layanan') || 'Tidak tersedia';
+        document.getElementById('confirm-tukang-potong').textContent = urlParams.get('tukang-potong') || 'Tidak tersedia';
+        document.getElementById('confirm-tanggal').textContent = urlParams.get('tanggal') || 'Tidak tersedia';
+        document.getElementById('confirm-jam').textContent = urlParams.get('jam') || 'Tidak tersedia';
+    </script>
+    
+	
+</body>
+</html>
