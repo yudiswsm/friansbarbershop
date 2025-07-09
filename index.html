@@ -5,153 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frians Barbershop - Beranda</title>
     <style>
-        /* Base Styles */
+        /* BASE STYLES & FONT */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font: serif; 
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('ruang.jpg') center/cover;
+            font-family: serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                                 url('ruang.jpg') center/cover no-repeat fixed;
             height: 100vh;
-            display: flex; 
-            flex-direction: column;
-            justify-content: space-between; 
-            position: relative; 
-            overflow-x: hidden; 
-        }
-
-        /* Hero Section / .judul */
-        .judul { 
-            max-width: 800px;
-            margin: auto; /* Tetap auto agar tenggah horizontal */
-            padding: 30px;
-            text-align: center;     
-            flex-grow: 1; 
-            display: flex; 
-            flex-direction: column; 
-            /* Perubahan di sini untuk menaikkan judul dan tombol */
-            justify-content: center; /* Kembali ke tengah agar keseluruhan blok di tengah */
-            align-items: center; 
-            padding-top: 0; /* Hapus padding-top yang menggeser terlalu jauh */
-        }
-        
-        .btn-wrapper {
-            /* Perubahan di sini: Hapus margin-top: auto; atau gunakan nilai tetap kecil */
-            margin-top: 30px; /* Memberikan jarak yang lebih masuk akal antara teks dan tombol */
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            flex-wrap: wrap; 
-        }
-
-        h1 {
-            margin-bottom: 0px; 
-            color: #fff;
-            font-size: 36px;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 30px rgb(227, 230, 92);
-        }
-        p {
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 0;
-        }
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
-            background-color: #cac146;
-            color: #fff;
-            font-size: 18px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-        }
-        .btn:hover {
-            background-color: #bdaa3f;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3); 
-        }
-        footer {
-            padding: 20px 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
-            text-align: center;
-        }
-        .contact { 
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* HEADER / JUDUL SECTION */
+        .judul {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            padding-top: 150px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 100px;
-            flex-wrap: wrap; 
-        }
-       
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s ease-in-out;
-            color: #fff; 
         }
 
-        .contact-item:hover {
-            transform: translateY(-2px);
-        }
-
-        .contact-item img {
-            width: 28px;
-            height: 28px;
-            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
-        }
-
-        .contact-item a {
+        .judul h1 {
+            margin-bottom: 5px;
             color: #fff;
-            text-decoration: none;
-            font-size: 1.05em;
-            transition: color 0.3s;
+            font-size: 38px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(227, 230, 92, 0.8), 0 0 30px rgba(227, 230, 92, 0.5);
+            animation: fadeInDown 1.2s ease-out;
+        }
+        .judul p {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease-out 0.3s forwards;
+            opacity: 0;
         }
 
-        .contact-item a:hover {
-            color: #ffe66d;
-            text-decoration: underline;
-        }
-        
-        /* --- Kode Diskon Tetap Sama --- */
-        .diskon-wrapper {
-            position: absolute;
-            top: 120px;
-            right: 100px;
-            padding: 8px 15px;
-            background: linear-gradient(to right, #ff6b6b, #ee5253);
-            color: #fff;
-            font-size: 1.1em;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 107, 107, 0.5);
-            transform: rotate(10deg);
-            animation: bounceIn 1.5s ease-out forwards, pulse 2s infinite 1.5s; 
-            display: inline-block;
-            text-transform: uppercase;
-            border: 2px solid #fff;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-            z-index: 1000;
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .diskon-wrapper::before {
-            content: 'Special Promo!';
-            position: absolute;
-            top: -10px;
-            left: -30px;
-            background-color: #cac146;
-            color: #2c3e50;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.5em;
-            font-weight: bold;
-            transform: rotate(-20deg);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            text-shadow: none;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         @keyframes bounceIn {
@@ -166,53 +92,400 @@
             50% { transform: scale(1.02) rotate(10deg); }
             100% { transform: scale(1) rotate(10deg); }
         }
-        /* --- End Diskon Code --- */
+         @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-        /* --- Media Queries untuk Responsivitas --- */
+        /* ACTION BUTTONS */
+        .action-buttons {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            animation: zoomIn 1.2s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 250px;
+            padding: 18px 25px;
+            background-color: #cac146;
+            color: #fff;
+            font-family: serif;
+            font-size: 18px;
+            font-weight: 200;
+            border-radius: 10px;
+            border: 2px solid #ffca28;
+            animation: pulse-btn 2s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-20deg);
+            transition: all 0.7s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 125%;
+        }
+
+        .btn:hover {
+            background-color: #bdaa3f;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+            color: #fff;
+            animation: none;
+        }
+
+        .btn:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            transition: transform 0.1s ease;
+        }
+
+        /* DISCOUNT PROMO WRAPPER */
+        .diskon-wrapper {
+            position: absolute;
+            top: 110px;
+            right: 7vw;
+            padding: 8px 15px;
+            background: linear-gradient(to right, #ff6b6b, #ee5253);
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 107, 107, 0.5);
+            transform: rotate(10deg);
+            animation: bounceIn 1.5s ease-out forwards, pulse 2s infinite 1.5s;
+            display: inline-block;
+            text-transform: uppercase;
+            border: 2px solid #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        .diskon-wrapper::before {
+            content: 'Special Promo!';
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            background-color: #cac146;
+            color: #2c3e50;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.5em;
+            font-weight: bold;
+            transform: rotate(-20deg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            text-shadow: none;
+            pointer-events: auto;
+        }
+
+        /* FEATURES SECTION (Kelebihan Kami) */
+        .features-section {
+            width: 100%;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 40px;
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: fadeIn 1.5s ease-out 0.9s forwards;
+            opacity: 0;
+        }
+        .features-section h2 {
+            color: #e0d74f;
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        .features-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-box {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(224, 215, 79, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px; /* Tetap 350px untuk 3 kolom */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .feature-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+        .feature-box h3 {
+            color: #ffc107;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+        }
+        .feature-box p {
+            color: #e0e0e0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .feature-box .icon {
+            font-size: 50px;
+            color: #e0d74f;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(227, 230, 92, 0.8);
+        }
+
+        /* STATS SECTION */
+        .stats-section {
+            width: 100%;
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 40px;
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+            animation: fadeIn 1.5s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        .stat-item {
+            text-align: center;
+            color: #fff;
+        }
+        .stat-item .number {
+            font-size: 55px;
+            font-weight: bold;
+            color: #e0d74f;
+            text-shadow: 0 0 10px rgba(227, 230, 92, 0.7);
+            margin-bottom: 5px;
+        }
+        .stat-item .label {
+            font-size: 22px;
+            color: #f0f0f0;
+        }
+
+        /* TESTIMONIALS SECTION (Apa Kata Mereka Tentang Kami) - ZIGZAG STYLE */
+        .highlight-section {
+            width: 100%;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+            animation: slideInUp 1s ease-out 1.5s forwards;
+            opacity: 0;
+            text-align: center; /* Tengah judul */
+        }
+        .highlight-section h2 {
+            color: #e0d74f;
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        .testimonial-wrapper { /* Kontainer untuk semua testimoni */
+            max-width: 900px; /* Lebar maksimum untuk zigzag */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Jarak antar testimoni dikurangi */
+            padding: 0 10px; /* Sedikit padding agar tidak terlalu mepet tepi */
+        }
+        .testimonial-item {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(224, 215, 79, 0.3);
+            border-radius: 10px;
+            padding: 25px 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left; /* Teks rata kiri di dalam box */
+            position: relative;
+            width: 60%; /* DIUBAH: Menggunakan lebar persentase yang lebih kecil */
+            min-width: 280px; /* Batasan minimal agar tidak terlalu kecil di mobile */
+            /* margin-left dan margin-right diatur oleh align-self untuk zigzag */
+        }
+        .testimonial-item:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Efek Zigzag */
+        .testimonial-item:nth-child(odd) { /* Item ganjil (1, 3, 5...) */
+            align-self: flex-start; /* Rata kiri */
+            margin-right: auto; /* Dorong ke kiri, dengan lebar item yang lebih kecil */
+            /* margin-left: 0; */ /* Pastikan tidak ada margin-left tambahan */
+        }
+        .testimonial-item:nth-child(even) { /* Item genap (2, 4, 6...) */
+            align-self: flex-end; /* Rata kanan */
+            margin-left: auto; /* Dorong ke kanan, dengan lebar item yang lebih kecil */
+            /* margin-right: 0; */ /* Pastikan tidak ada margin-right tambahan */
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: #e0d74f;
+            font-size: 16px;
+            text-align: right; /* Nama rata kanan di dalam box */
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 25px 0;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            margin-top: 40px;
+        }
+        .contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s ease-in-out;
+            color: #fff;
+            font-size: 1.1em;
+        }
+        .contact-item:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+        .contact-item img {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(1px 1px 5px rgba(227, 230, 92, 0.7));
+        }
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .contact-item a:hover {
+            color: #e0d74f;
+            text-decoration: none;
+            text-shadow: 0 0 8px rgba(227, 230, 92, 0.7);
+        }
+
+        /* MEDIA QUERIES FOR RESPONSIVENESS */
+        @media (max-width: 992px) {
+            .judul h1 { font-size: 38px; }
+            .judul p { font-size: 20px; }
+            .contact { gap: 50px; }
+            .highlight-section, .stats-section, .features-section { padding: 30px 15px; }
+            .highlight-section h2, .features-section h2 { font-size: 26px; }
+            .stat-item .number { font-size: 48px; }
+            .stat-item .label { font-size: 20px; }
+            .diskon-wrapper { top: 100px; right: 3vw; }
+            .features-container { gap: 20px; }
+            .feature-box { max-width: 300px; }
+            .testimonial-item { width: 75%; /* Sesuaikan lebar di tablet */ }
+        }
+
         @media (max-width: 768px) {
-            .judul {
-                padding-top: 0; /* Hapus padding-top di mobile juga */
-                justify-content: center; /* Pastikan konten tetap di tengah vertikal */
-            }
-            h1 {
-                font-size: 30px; 
-            }
-            p {
-                font-size: 18px;
-            }
-            .btn-wrapper {
-                flex-direction: column; 
-                margin-top: 20px; 
+            body { height: auto; }
+            .judul { padding-top: 60px; padding-bottom: 60px; }
+            .judul h1 { font-size: 32px; letter-spacing: 1px; }
+            .judul p { font-size: 18px; margin-bottom: 30px; }
+            .action-buttons {
+                flex-direction: column;
+                margin-top: 20px;
+                gap: 15px;
             }
             .btn {
-                padding: 12px 25px;
-                font-size: 16px;
-                margin: 8px auto; 
-                width: fit-content; 
+                padding: 15px 30px;
+                font-size: 18px;
+                width: 80%;
+                max-width: 300px;
             }
             .diskon-wrapper {
                 top: 10px;
                 right: 10px;
                 padding: 6px 12px;
                 font-size: 0.9em;
-                transform: rotate(5deg);
+                transform: rotate(0deg);
                 animation: none;
             }
-            .diskon-wrapper::before {
-                display: none;
+            .diskon-wrapper::before { display: none; }
+            .contact { flex-direction: column; gap: 20px; }
+            .contact-item { justify-content: center; font-size: 1em; }
+            .contact-item img { width: 28px; height: 28px; }
+            .highlight-section, .stats-section, .features-section { padding: 25px 10px; margin-top: 30px; }
+            .highlight-section h2, .features-section h2 { font-size: 24px; }
+            .testimonial-text { font-size: 16px; }
+            .testimonial-author { font-size: 14px; margin-bottom: 15px;}
+            .stat-item .number { font-size: 40px; }
+            .stat-item .label { font-size: 18px; }
+            .contact-item { font-size: 0.9em; }
+            .features-container { gap: 20px; }
+            .feature-box { padding: 20px; max-width: 100%; }
+            .testimonial-item {
+                width: 95%; /* Testimoni tetap di tengah untuk mobile */
+                align-self: center !important;
+                margin-left: auto;
+                margin-right: auto;
             }
-            .contact { 
-                flex-direction: column;
-                gap: 15px; 
-            }
-            .contact-item {
-                justify-content: center; 
-            }
-            img {
-                max-width: 100%; 
-                height: auto;
-                display: block; 
-            }
+        }
+
+        @media (max-width: 480px) {
+            .judul h1 { font-size: 28px; }
+            .judul p { font-size: 16px; }
+            .btn { padding: 12px 25px; font-size: 16px; }
+            .diskon-wrapper { font-size: 0.8em; padding: 5px 10px; }
+            .highlight-section h2, .features-section h2 { font-size: 20px; }
+            .testimonial-text { font-size: 15px; }
+            .testimonial-author { font-size: 13px; margin-bottom: 10px;}
+            .stat-item .number { font-size: 30px; }
+            .stat-item .label { font-size: 15px; }
+            .feature-box h3 { font-size: 20px; }
+            .feature-box p { font-size: 14px; }
+            .feature-box .icon { font-size: 40px; }
         }
     </style>
 </head>
@@ -222,12 +495,96 @@
     <div class="judul">
         <h1>SELAMAT DATANG DI FRIANS BARBERSHOP</h1>
         <p>"Keren Bukan Lagi Pilihan, Tapi Kebutuhan"</p>
-        
-        <div class="btn-wrapper">
+
+        <div class="action-buttons">
             <a href="informasi.html" class="btn">Informasi Barbershop</a>
             <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
         </div>
     </div>
+
+    <section class="features-section">
+        <h2>Kelebihan Barbershop Kami</h2>
+        <div class="features-container">
+            <div class="feature-box">
+                <span class="icon">✂️</span>
+                <h3>Barber Profesional</h3>
+                <p>Tim barber kami terlatih dan berpengalaman, siap menciptakan gaya rambut impian Anda dengan presisi.</p>
+            </div>
+            <div class="feature-box">
+                <span class="icon">✨</span>
+                <h3>Produk Kualitas Premium</h3>
+                <p>Kami hanya menggunakan produk perawatan rambut terbaik untuk hasil yang optimal dan tahan lama.</p>
+            </div>
+            <div class="feature-box">
+                <span class="icon">🛋️</span>
+                <h3>Suasana Nyaman & Modern</h3>
+                <p>Nikmati pengalaman potong rambut yang santai di lingkungan barbershop kami yang bersih dan stylish.</p>
+            </div>
+            <div class="feature-box">
+                <span class="icon">💰</span>
+                <h3>Harga Terjangkau</h3>
+                <p>Kualitas premium dengan harga yang bersahabat, karena tampil keren tak harus mahal.</p>
+            </div>
+            <div class="feature-box">
+                <span class="icon">☕</span>
+                <h3>Fasilitas Lengkap</h3>
+                <p>Tersedia Wi-Fi gratis, minuman, dan area tunggu yang nyaman untuk pengalaman terbaik Anda.</p>
+            </div>
+            <div class="feature-box">
+                <span class="icon">⏰</span>
+                <h3>Fleksibel & Tepat Waktu</h3>
+                <p>Jadwal yang fleksibel dan pelayanan yang efisien, menghargai waktu berharga Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <h2>Fakta Menarik Tentang Kami</h2>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="number" id="cuts-count">0</div>
+                <div class="label">Potongan Rambut Sempurna</div>
+            </div>
+            <div class="stat-item">
+                <div class="number" id="customers-count">0</div>
+                <div class="label">Pelanggan Setia</div>
+            </div>
+            <div class="stat-item">
+                <div class="number" id="years-count">0</div>
+                <div class="label">Tahun Berdiri</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlight-section">
+        <h2>Apa Kata Mereka Tentang Kami</h2>
+        <div class="testimonial-wrapper">
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Potongan rambut terbaik!"</p>
+                <p class="testimonial-author">- Bayu</p>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Pelayanan ramah, hasil memuaskan."</p>
+                <p class="testimonial-author">- Citra</p>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Selalu jadi langganan."</p>
+                <p class="testimonial-author">- Arya</p>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Keren banget hasilnya!"</p>
+                <p class="testimonial-author">- Dinda</p>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Nyaman dan cepat."</p>
+                <p class="testimonial-author">- Eko</p>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Gaya rambut saya jadi lebih modern!"</p>
+                <p class="testimonial-author">- Fajar</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="contact">
@@ -245,5 +602,64 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // JavaScript for Number Counters
+        const animateNumber = (id, target) => {
+            const element = document.getElementById(id);
+            let current = 0;
+            const increment = target / 200;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 10);
+        };
+
+        // Intersection Observer to trigger animations when elements are in view
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const featuresObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumber('cuts-count', 7500);
+                    animateNumber('customers-count', 5000);
+                    animateNumber('years-count', 10);
+                    entry.target.style.opacity = 1;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const highlightObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+
+        // Mengamati bagian-bagian yang diinginkan
+        featuresObserver.observe(document.querySelector('.features-section'));
+        statsObserver.observe(document.querySelector('.stats-section'));
+        highlightObserver.observe(document.querySelector('.highlight-section'));
+    </script>
 </body>
 </html>
