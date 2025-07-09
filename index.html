@@ -3,27 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frians Barbershop</title>
+    <title>Frians Barbershop - Beranda</title>
     <style>
+        /* Base Styles */
         body {
             margin: 0;
             padding: 0;
-            font: serif;
+            font: serif; 
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                         url('ruang.jpg') center/cover;
             height: 100vh;
-            display: flex;
+            display: flex; 
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-between; 
+            position: relative; 
+            overflow-x: hidden; 
         }
-        .judul {
+
+        /* Hero Section / .judul */
+        .judul { 
             max-width: 800px;
-            margin: 50px auto;
+            margin: auto; /* Tetap auto agar tenggah horizontal */
             padding: 30px;
-            text-align: center;      
+            text-align: center;     
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+            /* Perubahan di sini untuk menaikkan judul dan tombol */
+            justify-content: center; /* Kembali ke tengah agar keseluruhan blok di tengah */
+            align-items: center; 
+            padding-top: 0; /* Hapus padding-top yang menggeser terlalu jauh */
         }
+        
+        .btn-wrapper {
+            /* Perubahan di sini: Hapus margin-top: auto; atau gunakan nilai tetap kecil */
+            margin-top: 30px; /* Memberikan jarak yang lebih masuk akal antara teks dan tombol */
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            flex-wrap: wrap; 
+        }
+
         h1 {
-            margin-bottom: 20px;
+            margin-bottom: 0px; 
             color: #fff;
             font-size: 36px;
             letter-spacing: 2px;
@@ -32,6 +54,7 @@
         p {
             font-size: 20px;
             color: #fff;
+            margin-bottom: 0;
         }
         .btn {
             display: inline-block;
@@ -43,35 +66,32 @@
             border-radius: 5px;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
         }
         .btn:hover {
             background-color: #bdaa3f;
             transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3); 
         }
         footer {
             padding: 20px 0;
-            margin-top: 20px;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
+            text-align: center;
         }
-        .contact {
+        .contact { 
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 100px;
+            flex-wrap: wrap; 
         }
-       .contact-items-wrapper {
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 10px;
-        }
-
+       
         .contact-item {
             display: flex;
             align-items: center;
             gap: 8px;
             transition: transform 0.2s ease-in-out;
+            color: #fff; 
         }
 
         .contact-item:hover {
@@ -95,14 +115,118 @@
             color: #ffe66d;
             text-decoration: underline;
         }
+        
+        /* --- Kode Diskon Tetap Sama --- */
+        .diskon-wrapper {
+            position: absolute;
+            top: 120px;
+            right: 100px;
+            padding: 8px 15px;
+            background: linear-gradient(to right, #ff6b6b, #ee5253);
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 107, 107, 0.5);
+            transform: rotate(10deg);
+            animation: bounceIn 1.5s ease-out forwards, pulse 2s infinite 1.5s; 
+            display: inline-block;
+            text-transform: uppercase;
+            border: 2px solid #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            z-index: 1000;
+        }
+
+        .diskon-wrapper::before {
+            content: 'Special Promo!';
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            background-color: #cac146;
+            color: #2c3e50;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.5em;
+            font-weight: bold;
+            transform: rotate(-20deg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            text-shadow: none;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(15deg); opacity: 1; }
+            80% { transform: scale(0.9) rotate(8deg); }
+            100% { transform: scale(1) rotate(10deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(10deg); }
+            50% { transform: scale(1.02) rotate(10deg); }
+            100% { transform: scale(1) rotate(10deg); }
+        }
+        /* --- End Diskon Code --- */
+
+        /* --- Media Queries untuk Responsivitas --- */
+        @media (max-width: 768px) {
+            .judul {
+                padding-top: 0; /* Hapus padding-top di mobile juga */
+                justify-content: center; /* Pastikan konten tetap di tengah vertikal */
+            }
+            h1 {
+                font-size: 30px; 
+            }
+            p {
+                font-size: 18px;
+            }
+            .btn-wrapper {
+                flex-direction: column; 
+                margin-top: 20px; 
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 16px;
+                margin: 8px auto; 
+                width: fit-content; 
+            }
+            .diskon-wrapper {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.9em;
+                transform: rotate(5deg);
+                animation: none;
+            }
+            .diskon-wrapper::before {
+                display: none;
+            }
+            .contact { 
+                flex-direction: column;
+                gap: 15px; 
+            }
+            .contact-item {
+                justify-content: center; 
+            }
+            img {
+                max-width: 100%; 
+                height: auto;
+                display: block; 
+            }
+        }
     </style>
 </head>
 <body>
+    <span class="diskon-wrapper">Diskon 20% Cheerful July!</span>
+
     <div class="judul">
         <h1>SELAMAT DATANG DI FRIANS BARBERSHOP</h1>
         <p>"Keren Bukan Lagi Pilihan, Tapi Kebutuhan"</p>
-        <a href="informasi.html" class="btn">Informasi Barbershop</a>
-        <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
+        
+        <div class="btn-wrapper">
+            <a href="informasi.html" class="btn">Informasi Barbershop</a>
+            <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
+        </div>
     </div>
 
     <footer>
