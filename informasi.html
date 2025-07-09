@@ -3,190 +3,448 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Informasi Barbershop</title>
+    <title>Informasi Barbershop - Frians Barbershop</title>
     <style>
+        /* Base Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: serif;
+            font-family: serif; 
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-            url('ruang.jpg') top/cover;
+                        url('ruang.jpg') center/cover fixed; 
+            color: #333;
+            line-height: 1.6;
         }
-        h1 {
-            margin-bottom: 20px;
-            color: #fff;
-            font-size: 36px;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 30px rgb(227, 230, 92);
-        }
-        header, footer {
+
+        /* Header */
+        header {
             background-color: #2c3e50;
             color: white;
-            padding: 20px;
+            padding: 20px 0; 
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+        }
+        header h1 {
+            margin: 0; 
+            margin-bottom: 15px; 
+            color: #fff; 
+            font-size: 36px; 
+            letter-spacing: 2px; 
+            text-shadow: 1px 1px 30px rgb(227, 230, 92); 
         }
         nav a {
             display: inline-block;
             padding: 10px 20px;
-            margin: 0 10px;
+            margin: 0 8px; 
             background-color: #cac146;
-            color: #fff;
+            color: #fff; 
+            font-size: 16px; 
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease; 
+            font-weight: bold;
         }
         nav a:hover {
             background-color: #bdaa3f;
+            transform: translateY(-2px); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+
+        /* Main Content Layout */
         main {
-            display: flex;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: rgba(255,255,255,0.9);
-            border-radius: 10px;
+            display: flex; /* Akan diubah saat media query untuk fleksibilitas */
+            flex-wrap: wrap; /* Memungkinkan item turun ke baris baru */
+            align-items: flex-start; 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 40px auto; 
+            padding: 30px; 
+            background-color: rgba(255,255,255,0.95); 
+            border-radius: 12px; 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
         }
-        #content {
-            flex: 3;
+
+        /* Wrapper untuk konten kolom kiri (Jadwal, Layanan, Harga) */
+        #left-column-content {
+            flex: 3; /* Ambil 3 bagian lebar */
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 30px; 
         }
-        article {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-        article h2 {
-            color: #cac146;
-            border-bottom: 2px solid #cac146;
-            padding-bottom: 10px;
-        }
+
+        /* Aside / Sidebar */
         aside {
-            flex: 1;
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
+            flex: 1; /* Ambil 1 bagian lebar */
+            background-color: #f8f8f8; 
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            text-align: center; 
+            border-top: 5px solid #2c3e50; 
+        }
+        aside h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #cac146;
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 26px; 
         }
         aside img {
             width: 100%;
+            max-width: 300px; 
+            height: auto;
             border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        aside p {
+            font-size: 16px; 
+            color: #444;
+            text-align: justify; 
+        }
+
+        /* Full-width section within main (for Barberman, Testimoni, Galeri) */
+        #full-width-articles {
+            flex-basis: 100%; /* Ambil 100% lebar, akan turun ke baris baru */
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px; /* Spasi dari bagian atas */
+            padding-top: 30px; /* Untuk garis pemisah jika diperlukan */
+            border-top: 1px solid rgba(0,0,0,0.1); /* Garis pemisah visual */
+        }
+        
+        article {
+            background-color: #fff;
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); 
+            border-top: 5px solid #cac146; 
+        }
+        article h2 {
+            color: #2c3e50; 
+            border-bottom: 2px solid #cac146;
+            padding-bottom: 12px; 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+            font-size: 28px; 
+            position: relative;
+        }
+        article h2::after {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 4px; 
+            background-color: #cac146;
+            position: absolute;
+            bottom: -2px; 
+            left: 0;
+            border-radius: 2px;
+        }
+        article p {
+            font-size: 17px; 
             margin-bottom: 10px;
         }
+        article strong {
+            color: #555;
+        }
+
+        /* Biaya Table */
         .biaya-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 16px;
+            font-size: 16px; 
+            margin-top: 20px; 
         }
         .biaya-table th, .biaya-table td {
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 12px 15px; 
+            border: 1px solid #ddd; 
+            text-align: left;
         }
         .biaya-table th {
             background-color: #cac146;
             color: #fff;
-        }
-        .btn {
-            display: block;
-            width: 200px;
-            padding: 15px;
-            margin: 20px auto;
-            text-align: center;
-            background-color: #cac146;
-            color: #fff;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #bdaa3f;
-            transform: translateY(-3px);
-        }
-    
-
-        footer .contact {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 15px;
-            padding-bottom: 15px;  
-        }
-
-        .contact-heading {
-            margin-bottom: 15px;
-            font-size: 1.2em;
             font-weight: bold;
-            color: #f0f0f0;
-            letter-spacing: 0.5px;
-            text-align: center;
+            text-transform: uppercase;
+        }
+        .biaya-table tr:nth-child(even) {
+            background-color: #f9f9f9; 
+        }
+        .biaya-table tr:hover {
+            background-color: #f0f0f0; 
         }
 
-        .contact-heading::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background-color: #cac146;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .contact-items-wrapper {
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 10px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-2px);
-        }
-
-        .contact-item img {
-            width: 28px;
-            height: 28px;
-            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
-        }
-
-        .contact-item a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.05em;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: #ffe66d;
-            text-decoration: underline;
-        }
+        /* Testimonial Cards */
         .testimonial-card {
-            background-color: #f9f9f9;
-            padding: 15px;
+            background-color: #fdfdfd; 
+            padding: 20px;
             border-left: 5px solid #cac146;
-            margin-bottom: 15px;
-            border-radius: 5px;
+            margin-bottom: 20px; 
+            border-radius: 8px; 
             font-style: italic;
-            color: #333;
+            color: #444;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '❝'; 
+            font-size: 3em;
+            color: #cac146;
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            opacity: 0.3;
         }
         .testimonial-card p {
             margin: 0 0 10px 0;
+            padding-left: 30px; 
+            font-size: 16px; 
         }
         .testimonial-card .author {
             text-align: right;
             font-weight: bold;
-            color: #555;
+            color: #2c3e50; 
             font-style: normal;
+            font-size: 15px; 
+        }
+        
+        /* Galeri Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 15px; 
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden; 
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px; 
+            object-fit: cover; 
+            display: block;
+            border-radius: 8px; 
+        }
+
+        /* Action Buttons at Bottom */
+        .action-buttons {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            gap: 20px; 
+            padding: 0 20px; 
+            flex-wrap: wrap; 
+        }
+
+        .btn {
+            display: inline-block; 
+            width: 200px;
+            padding: 15px;
+            background-color: #cac146;
+            color: #fff;  
+            border-radius: 8px; 
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-align: center; 
+        }
+        .btn:hover {
+            background-color: #bdaa3f;
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 30px 0; 
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0,0,0,0.2); 
+        }
+        .contact-heading {
+            font-size: 1.5em; 
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            color: #fff; 
+        }
+        .contact-heading::after {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 4px; 
+            background-color: #cac146;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+        .contact-items-wrapper {
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 40px; 
+            margin-top: 25px; 
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px; 
+            transition: transform 0.2s ease-in-out;
+            color: #fff;
+        }
+        .contact-item:hover {
+            transform: translateY(-3px) scale(1.05); 
+        }
+        .contact-item img {
+            width: 32px; 
+            height: 32px;
+            filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.4));
+        }
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em; 
+            transition: color 0.3s;
+        }
+        .contact-item a:hover {
+            color: #ffe66d;
+            text-decoration: underline;
+        }
+
+        /* Universal Responsive Image Rule */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; 
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        @media (max-width: 992px) { 
+            main {
+                flex-direction: column; 
+                margin: 30px 20px; 
+                padding: 20px;
+            }
+            #left-column-content, aside, #full-width-articles {
+                flex: none; 
+                width: 100%; 
+            }
+            aside img {
+                max-width: 100%; 
+            }
+            header h1 {
+                font-size: 36px;
+            }
+            nav a {
+                margin: 5px 5px;
+                padding: 8px 15px;
+                font-size: 15px;
+            }
+            article h2 {
+                font-size: 24px;
+            }
+            aside h2 {
+                font-size: 22px;
+            }
+            .action-buttons {
+                flex-direction: column; 
+                gap: 15px;
+            }
+            .btn {
+                width: 80%; 
+                margin: 0 auto; 
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+            }
+            #full-width-articles {
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) { 
+            header h1 {
+                font-size: 28px;
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav a {
+                flex-basis: 45%; 
+                margin: 5px;
+            }
+            main {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+            article, aside {
+                padding: 15px;
+            }
+            article h2 {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+            article h2::after {
+                width: 40px;
+                height: 3px;
+            }
+            article p {
+                font-size: 15px;
+            }
+            .biaya-table th, .biaya-table td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+            .testimonial-card {
+                padding: 15px;
+            }
+            .testimonial-card p {
+                padding-left: 20px;
+            }
+            .testimonial-card::before {
+                font-size: 2.5em;
+            }
+            .contact-heading {
+                font-size: 1.3em;
+            }
+            .contact-items-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .contact-item img {
+                width: 24px;
+                height: 24px;
+            }
+            .contact-item a {
+                font-size: 0.95em;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+            }
+            .gallery-item img {
+                height: 100px; 
+            }
+            #full-width-articles {
+                margin-top: 15px;
+                padding-top: 15px;
+            }
         }
     </style>
 </head>
@@ -197,12 +455,13 @@
             <a href="#jadwal-buka">Jadwal Buka & Tutup</a>
             <a href="#layanan">Layanan</a>
             <a href="#biaya">Harga</a>
-            <a href="#tukang-potong">Barberman</a>
+            <a href="#tukang-potong">Barberman</a> <a href="#testimoni">Testimoni</a>
+            <a href="#galeri">Galeri</a> 
         </nav>
     </header>
 
     <main>
-        <div id="content">
+        <div id="left-column-content">
             <article id="jadwal-buka">
                 <h2>Jadwal Buka & Tutup</h2>
                 <p><strong>Senin - Sabtu :</strong> 09:00 - 23:00</p>
@@ -233,16 +492,26 @@
                     <tr><td>Dreadlock</td><td>Rp 300.000 - 600.000</td></tr>
                 </table>
             </article>
+        </div>
 
+        <aside>
+            <h2>Tentang Kami</h2>
+            <img src="ruang2.jpg" alt="Foto Barbershop">
+            <p>Frians Barbershop adalah tempat grooming modern yang menggabungkan gaya klasik dan tren kekinian. Dengan tim barber berpengalaman dan pelayanan ramah, kami berkomitmen memberikan potongan rambut terbaik untuk menunjang penampilan Anda.
+                Kami percaya bahwa potong rambut bukan hanya kebutuhan, tapi juga bentuk ekspresi diri. Karena di Frians Barbershop, keren bukan lagi pilihan, tapi kebutuhan. Datang dan rasakan pengalaman berbeda di Frians Barbershop — karena penampilan keren dimulai dari sini.</p>
+        </aside>
+
+        <div id="full-width-articles">
             <article id="tukang-potong">
                 <h2>Barberman</h2>
                 <p><strong>Danda:</strong> Dengan pengalaman lebih dari 5 tahun, dikenal sebagai spesialis potongan rambut panjang yang mampu menciptakan gaya elegan dan natural, cocok untuk semua usia.</p>
-                <p><strong>Budi:</strong>  Ahli Korean-style haircut dengan pengalaman 6 tahun, mampu menghadirkan tampilan fresh dan trendi seperti gaya selebriti Korea.</p>
+                <p><strong>Budi:</strong> Ahli Korean-style haircut dengan pengalaman 6 tahun, mampu menghadirkan tampilan fresh dan trendi seperti gaya selebriti Korea.</p>
                 <p><strong>Ervin:</strong> Pernah menimba pengalaman langsung di barbershop Jepang, dapat membawa sentuhan disiplin dan detail khas Jepang dalam setiap potongannya.</p>
                 <p><strong>Aqil:</strong> Spesialis hair perming dan berbagai gaya potongan modern. Dengan 7 tahun pengalaman, Aqil siap menyulap rambut Anda menjadi mahakarya gaya.</p>
                 <p><strong>Sibal:</strong> Dengan 10 tahun pengalaman dan keahlian khusus dalam dreadlock dan hair coloring, Sibal adalah pilihan utama bagi Anda yang ingin tampil beda dan ekspresif.</p>
             </article>
-             <article id="testimoni">
+
+            <article id="testimoni">
                 <h2>Testimoni Pelanggan</h2>
                 <div class="testimonial-card">
                     <p>"Potongan rambut di Frians Barbershop selalu pas dan sesuai keinginan! Barbernya ramah dan profesional. Sangat merekomendasikan!"</p>
@@ -261,37 +530,44 @@
                     <p class="author">- Taufik H.</p>
                 </div>
             </article>
-                    
-        </div>
 
-        <aside>
-            <h2>Tentang Kami</h2>
-            <img src="ruang2.jpg" alt="Foto Barbershop">
-            <p>Frians Barbershop adalah tempat grooming modern yang menggabungkan gaya klasik dan tren kekinian. Dengan tim barber berpengalaman dan pelayanan ramah, kami berkomitmen memberikan potongan rambut terbaik untuk menunjang penampilan Anda.
-                Kami percaya bahwa potong rambut bukan hanya kebutuhan, tapi juga bentuk ekspresi diri. Karena di Frians Barbershop, keren bukan lagi pilihan, tapi kebutuhan. Datang dan rasakan pengalaman berbeda di Frians Barbershop — karena penampilan keren dimulai dari sini.</p>
-        </aside>
+            <article id="galeri">
+                <h2>Galeri Kami</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="Curtain.jpg" alt="Galeri 1"></div>
+                    <div class="gallery-item"><img src="Twoblock.jpg" alt="Galeri 2"></div>
+                    <div class="gallery-item"><img src="mullet.jpg" alt="Galeri 3"></div>
+                    <div class="gallery-item"><img src="Comma.jpg" alt="Galeri 4"></div>
+                    <div class="gallery-item"><img src="Crop.jpg" alt="Galeri 5"></div>
+                    <div class="gallery-item"><img src="Wolfcut.jpg" alt="Galeri 6"></div>
+                </div>
+            </article>
+        </div>
     </main>
 
-    <a href="index.html" class="btn">Kembali ke Halaman Utama</a>
-    <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
+    <div class="action-buttons">
+        <a href="index.html" class="btn">Kembali ke Halaman Utama</a>
+        <a href="pemesanan.html" class="btn">Pesan Sekarang</a>
+    </div>
 
-<footer>
-    <div class="contact">
-        <p class="contact-heading">Atau Dapat Hubungi Kami Melalui:</p>
-        <div class="contact-items-wrapper"> <div class="contact-item">
-                <img src="ig.png" alt="Instagram">
-                <a href="https://instagram.com/yudiswsm" target="_blank">@yudiswsm</a>
-            </div>
-            <div class="contact-item">
-                <img src="wa.png" alt="WhatsApp">
-                <a href="https://wa.me/6282286230332" target="_blank">+62 822-8623-0332</a>
-            </div>
-            <div class="contact-item">
-                <img src="mail.png" alt="Email">
-                <a href="mailto:yudistc22@gmail.com">friansbarbershop@gmail.com</a>
+    <footer>
+        <div class="contact">
+            <p class="contact-heading">Atau Dapat Hubungi Kami Melalui:</p>
+            <div class="contact-items-wrapper">
+                <div class="contact-item">
+                    <img src="ig.png" alt="Instagram">
+                    <a href="https://instagram.com/yudiswsm" target="_blank">@yudiswsm</a>
+                </div>
+                <div class="contact-item">
+                    <img src="wa.png" alt="WhatsApp">
+                    <a href="https://wa.me/6282286230332" target="_blank">+62 822-8623-0332</a>
+                </div>
+                <div class="contact-item">
+                    <img src="mail.png" alt="Email">
+                    <a href="mailto:yudistc22@gmail.com">friansbarbershop@gmail.com</a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
